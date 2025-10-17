@@ -3,7 +3,13 @@ package calculator
 import camp.nextstep.edu.missionutils.Console
 
 class Delimiter(val input: String) {
+    private val defaultDelimiter: List<String> = listOf(",", ":")
 
+    val delimiters: List<String>
+
+    init {
+        delimiters = defaultDelimiter
+    }
 }
 
 fun main() {
