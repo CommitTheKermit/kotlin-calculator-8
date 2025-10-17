@@ -10,6 +10,15 @@ class Delimiter(val input: String) {
     init {
         delimiters = defaultDelimiter
     }
+
+    fun findCustomDelimiter(): List<String> {
+        val matchResult: MatchResult? = Regex("//(.)\\\\n(.*)").find(input)
+        if (matchResult != null && matchResult.groups[1] != null) {
+            return listOf(matchResult.groups[1]!!.value)
+        }
+
+        return listOf()
+    }
 }
 
 fun main() {
