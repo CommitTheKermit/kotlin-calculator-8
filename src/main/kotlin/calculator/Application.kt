@@ -36,12 +36,17 @@ fun parseNumbers(expression: String, delimiters: List<String>): List<Int> {
     }
 }
 
+fun calculate(numbers: List<Int>): Int {
+    return numbers.sum()
+}
+
 fun main() {
     println("덧셈할 문자열을 입력해 주세요.")
     val input = Console.readLine()
 
     val delimiter = Delimiter(input)
     val numbers = parseNumbers(delimiter.expression, delimiter.delimiters)
-    val result = 0
+    val result = calculate(numbers)
+
     println("결과 : $result")
 }
