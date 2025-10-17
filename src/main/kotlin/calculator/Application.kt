@@ -27,8 +27,13 @@ class Delimiter(val input: String) {
     }
 }
 
-fun parseNumbers(expression: String, delimiters: List<String>): List<String> {
-    return expression.split(*delimiters.toTypedArray())
+fun parseNumbers(expression: String, delimiters: List<String>): List<Int> {
+    val numberStrings = expression.split(*delimiters.toTypedArray())
+
+    return numberStrings.map { numberString ->
+        if (numberString.isEmpty()) 0
+        else numberString.toInt()
+    }
 }
 
 fun main() {
@@ -36,7 +41,7 @@ fun main() {
     val input = Console.readLine()
 
     val delimiter = Delimiter(input)
-    val numberStrings = parseNumbers(delimiter.expression, delimiter.delimiters)
+    val numbers = parseNumbers(delimiter.expression, delimiter.delimiters)
     val result = 0
     println("결과 : $result")
 }
