@@ -33,6 +33,10 @@ fun parseNumbers(expression: String, delimiters: List<String>): List<Int> {
     return numberStrings.map { numberString ->
         when {
             numberString.isEmpty() -> 0
+            numberString.toIntOrNull() == null ->
+                throw IllegalArgumentException("[ERROR] 숫자가 아닌 문자: $numberString")
+            numberString.toInt() < 0 ->
+                throw IllegalArgumentException("[ERROR] 음수는 허용되지 않습니다: $numberString")
             else -> numberString.toInt()
         }
     }
