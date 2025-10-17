@@ -6,9 +6,15 @@ class Delimiter(val input: String) {
     private val defaultDelimiter: List<String> = listOf(",", ":")
 
     val delimiters: List<String>
+    val expression: String
 
     init {
-        delimiters = defaultDelimiter
+        delimiters = defaultDelimiter + findCustomDelimiter()
+        if (delimiters.size > 2) {
+            expression = input.substring(4 + delimiters.last().length)
+        } else {
+            expression = input
+        }
     }
 
     fun findCustomDelimiter(): List<String> {
