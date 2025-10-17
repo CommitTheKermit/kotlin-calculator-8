@@ -31,8 +31,10 @@ fun parseNumbers(expression: String, delimiters: List<String>): List<Int> {
     val numberStrings = expression.split(*delimiters.toTypedArray())
 
     return numberStrings.map { numberString ->
-        if (numberString.isEmpty()) 0
-        else numberString.toInt()
+        when {
+            numberString.isEmpty() -> 0
+            else -> numberString.toInt()
+        }
     }
 }
 
