@@ -27,11 +27,16 @@ class Delimiter(val input: String) {
     }
 }
 
+fun parseNumbers(expression: String, delimiters: List<String>): List<String> {
+    return expression.split(*delimiters.toTypedArray())
+}
+
 fun main() {
     println("덧셈할 문자열을 입력해 주세요.")
     val input = Console.readLine()
 
     val delimiter = Delimiter(input)
+    val numberStrings = parseNumbers(delimiter.expression, delimiter.delimiters)
     val result = 0
     println("결과 : $result")
 }
